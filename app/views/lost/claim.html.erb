@@ -1,0 +1,96 @@
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+    .table th, .table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .table th {
+        text-align: center;
+    }
+}
+</style>
+
+<h1>Records of Submission</h1>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Owner Contact</th>
+                <th>Image</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @claim.present? %>
+                <% @claim.each do |data| %>
+                <tr>
+                    <td><%= data.item_name %></td>
+                    <td><%= data.description %></td>
+                    <td><%= data.location %></td>
+                    <td><%= data.contact %></td>
+                    <td>
+                        <% if data.image.attached? %>
+                          <%= link_to 'View File', rails_blob_path(data.image), target: '_blank' %>
+                        <% else %>
+                          No file attached
+                        <% end %>
+                    </td>
+                    <td> CLAIMED </td>                                           
+                </tr>
+                <% end %>
+            <% end %>
+        </tbody>        
+    </table>

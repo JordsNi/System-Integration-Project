@@ -1,0 +1,74 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<%= form_tag("/item", method: "post", multipart: true) do %>
+    <div>
+        <label>Name:</label>
+        <input type="text" name="item_name">
+    </div>
+    <div>
+        <label>Description:</label>
+        <input type="text" name="description">
+    </div>
+    <div>
+        <label>Location:</label>
+        <input type="text" name="location">
+    </div>
+    <div>
+        <label>Number:</label>
+        <input type="number" name="contact">
+    </div>
+    <div>
+        <label>Image:</label>
+        <input type="file" name="image">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+<% end %>
